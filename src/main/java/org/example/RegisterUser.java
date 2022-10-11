@@ -30,8 +30,7 @@ public class RegisterUser {
         }
         System.out.print("Enter pesel:");
         String pesel = scan.nextLine();
-        while(!dv.validatePesel(pesel)){
-            System.out.println("Enter correct pesel!");
+        while(!dv.validatePesel(pesel,true)){
             pesel = scan.nextLine();
         }
         System.out.print("Enter e-mail:");

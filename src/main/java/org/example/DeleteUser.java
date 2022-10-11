@@ -14,7 +14,7 @@ public class DeleteUser {
         DataValidation dv = new DataValidation();
         System.out.print("Enter pesel of user which you want to delete:");
         String pesel = scan.nextLine();
-        while(!dv.validatePesel(pesel)){
+        while(!dv.validatePesel(pesel,false)){
             System.out.println("Enter correct pesel!");
             pesel = scan.nextLine();
         }
@@ -22,7 +22,7 @@ public class DeleteUser {
         deleteFromDb(pesel);
         sendConfirmation(userToDelete);
     }
-    public User getUserData(String pesel){
+    private User getUserData(String pesel){
         User user = new User();
         try (Connection conection = DriverManager.getConnection(msc.getConnectionUrl(), msc.getUsername(), msc.getPass())) {
             PreparedStatement statemnt = conection.prepareStatement("SELECT * FROM users WHERE pesel = ?");
@@ -41,7 +41,7 @@ public class DeleteUser {
         System.out.println(user);
         return user;
     }
-    public void deleteFromDb(String pesel){
+    private void deleteFromDb(String pesel){
         try (Connection conection = DriverManager.getConnection(msc.getConnectionUrl(), msc.getUsername(), msc.getPass())) {
             PreparedStatement statemnt = conection.prepareStatement("DELETE FROM users WHERE pesel = ?");
             statemnt.setString(1,pesel);
@@ -51,7 +51,7 @@ public class DeleteUser {
             System.out.println(e.getMessage());
         }
     }
-    public void sendConfirmation(User user){
+    private void sendConfirmation(User user){
         Sender sender = new Sender();
         String subject = "User deletion confirmation";
         String content = "<h1 style=\"font-family:Arial;\">User with your email has been deleted from database!</h1>" +

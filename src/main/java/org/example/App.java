@@ -13,8 +13,8 @@ public class App
         while(flag){
             System.out.println(
                     "Enter your choice:\n"+
-                            "1 - register new user\t"+
-                            "2 - delete user\t"+
+                            "1 - register new user | "+
+                            "2 - delete user | "+
                             "other - exit"
             );
             int choice = scan.nextInt();

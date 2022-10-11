@@ -15,8 +15,9 @@ public class DataValidationTest {
     @Test
     public void validatePeselTest(){
         DataValidation dv = new DataValidation();
-        assertTrue(dv.validatePesel("12345678901"));
-        assertFalse(dv.validatePesel("1232243"));
+        assertTrue(dv.validatePesel("12323178901",true));
+        assertFalse(dv.validatePesel("90113012358",true));
+        assertFalse(dv.validatePesel("1232243",true));
     }
     @Test
     public void validateEmailTest(){
