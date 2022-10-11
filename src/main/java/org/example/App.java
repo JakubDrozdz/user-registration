@@ -36,6 +36,7 @@ public class App
         register.register();
     }
     public static void deleteUser(){
-
+        DeleteUser delete = new DeleteUser();
+        delete.delete();
     }
 }

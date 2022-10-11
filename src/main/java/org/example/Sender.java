@@ -23,7 +23,7 @@ public class Sender {
                 return new PasswordAuthentication(MailCredentials.getUser(), MailCredentials.getPass());
             }
         });
-        session.setDebug(true);
+        //session.setDebug(true);
 
         try{
             MimeMessage message = new MimeMessage(session);

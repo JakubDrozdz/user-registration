@@ -65,7 +65,7 @@ public class RegisterUser {
     private void sendConfirmation(User user){
         Sender sender = new Sender();
         String subject = "User registration confirmation";
-        String content = "<h1 style=\"font-family:Arial;\">User with you email has been added to database!</h1>" +
+        String content = "<h1 style=\"font-family:Arial;\">User with your email has been added to database!</h1>" +
                 "<h2 style=\"font-family:Arial;\">Details:</h2>" +
                 "<ul style=\"font-family:Arial;list-style:none\">" +
                 "<li>First name: "+user.getFirstName()+"</li>" +
