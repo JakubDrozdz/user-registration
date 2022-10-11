@@ -43,6 +43,7 @@ public class RegisterUser {
 
         User newUser = new User(firstName,lastName,pesel,postalCode,city,email);
         saveToDb(newUser);
+        sendConfirmation(newUser);
     }
 
     private void saveToDb(User user){
@@ -60,5 +61,20 @@ public class RegisterUser {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+    private void sendConfirmation(User user){
+        Sender sender = new Sender();
+        String subject = "User registration confirmation";
+        String content = "<h1 style=\"font-family:Arial;\">User with you email has been added to database!</h1>" +
+                "<h2 style=\"font-family:Arial;\">Details:</h2>" +
+                "<ul style=\"font-family:Arial;list-style:none\">" +
+                "<li>First name: "+user.getFirstName()+"</li>" +
+                "<li>Last name: "+user.getLastName()+"</li>" +
+                "<li>PESEL: "+user.getPesel()+"</li>" +
+                "<li>Postal code: "+user.getPostalCode()+"</li>" +
+                "<li>City: "+user.getCity()+"</li>" +
+                "<li>E-mail address: "+user.getEmail()+"</li>" +
+                "</ul>";
+        sender.send(user.getEmail(),content,subject);
     }
 }
